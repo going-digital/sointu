@@ -530,6 +530,12 @@ func (s *Interpreter) Render(buffer []float32, syncBuf []float32, maxtime int) (
 				if byte(s.synth.globalTime) == 0 { // every 256 samples
 					syncBuf[0], syncBuf = float32(stack[l-1]), syncBuf[1:]
 				}
+			case opFriction:
+				// Dummy operator for friction
+				var in = stack[l-2]
+				var force = stack[l-1]
+				stack = stack[:l-1]
+				stack[l-1] = in + force
 			default:
 				return samples, syncs, time, errors.New("invalid / unimplemented opcode")
 			}

@@ -132,6 +132,10 @@ var UnitTypes = map[string]([]UnitParameter){
 		{Name: "stereo", MinValue: 0, MaxValue: 1, CanSet: true, CanModulate: false},
 		{Name: "channel", MinValue: 0, MaxValue: 6, CanSet: true, CanModulate: false}},
 	"sync": []UnitParameter{},
+	"friction": []UnitParameter{
+		{Name: "dynamic", MinValue: 0, MaxValue: 128, CanSet: true, CanModulate: true},
+		{Name: "transition", MinValue: 0, MaxValue: 128, CanSet: true, CanModulate: true},
+	},
 }
 
 var Ports = make(map[string]([]string))

@@ -34,7 +34,7 @@ func (u *Unit) StackChange() int {
 		return 1 + u.Parameters["stereo"]
 	case "pan":
 		return 1 - u.Parameters["stereo"]
-	case "speed":
+	case "speed", "friction":
 		return -1
 	case "send":
 		return (-1 - u.Parameters["stereo"]) * u.Parameters["sendpop"]
@@ -44,7 +44,7 @@ func (u *Unit) StackChange() int {
 
 func (u *Unit) StackNeed() int {
 	switch u.Type {
-	case "", "envelope", "oscillator", "noise", "receive", "loadnote", "loadval", "in":
+	case "", "envelope", "oscillator", "noise", "receive", "loadnote", "loadval", "in", "friction":
 		return 0
 	case "mulp", "mul", "add", "addp", "xch":
 		return 2 * (1 + u.Parameters["stereo"])
